@@ -1,5 +1,5 @@
 {
-  "name": "filemaker",
+  "name": "fill-file",
   "license": "MIT",
   "version": "0.0.1",
   "main": "dist/index.js",
