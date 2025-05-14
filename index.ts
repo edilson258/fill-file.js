@@ -1,7 +1,8 @@
 import { parseCmdArgs } from "@/src/internal/args-parser";
 import { parseFileSizeToBytes } from "@/src/internal/size-parser";
+import { isDirectRun } from "./src/internal/utilities";
+import { fillFileFromCmdArgs } from "./src/fill-file";
 
-const args = parseCmdArgs();
-
-console.log(args.output)
-console.log(parseFileSizeToBytes(args.size))
+if (isDirectRun()) {
+  fillFileFromCmdArgs(parseCmdArgs())
+}

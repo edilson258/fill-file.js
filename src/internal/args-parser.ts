@@ -1,12 +1,12 @@
 import yargs from 'yargs';
 
-export type Argv = {
+export type CmdArgs = {
   size: string;
-  type: string;
+  format: string;
   output: string;
 };
 
-export function parseCmdArgs(): Argv {
+export function parseCmdArgs(): CmdArgs {
   const argv = yargs(process.argv.slice(2))
     .wrap(120)
     .usage('Usage: $0 <output> [options]')
@@ -41,5 +41,5 @@ export function parseCmdArgs(): Argv {
     .showHelpOnFail(false, 'Something went wrong! run with --help')
     .parse();
 
-  return argv as unknown as Argv;
+  return argv as unknown as CmdArgs;
 }
