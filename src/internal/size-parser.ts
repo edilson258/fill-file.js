@@ -1,4 +1,4 @@
-import { DefaultFileSizeInBytes } from "./consts"
+import { DefaultFileSizeInBytes } from "./constants"
 
 type SizeSuffix = "B" | "K" | "M" | "G"
 
