@@ -15,6 +15,8 @@
     "moduleResolution": "Bundler",
     "module": "ESNext",
     "noEmit": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
     /* If your code runs in the DOM: */
     "lib": [
       "es2022",

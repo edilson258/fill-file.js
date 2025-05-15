@@ -27,4 +27,31 @@ export class TextStream extends Readable {
 
     this.push(toPush);
   }
-}
+};
+
+export class BinaryStream extends Readable {
+  private chunkSize = 64 * 1024; // 64KB
+  private fillByte: number;
+  private bytesRemaining: number;
+
+  constructor(sizeInBytes: number, fillByte: number = 0) {
+    super();
+    this.fillByte = fillByte;
+    this.bytesRemaining = sizeInBytes;
+  }
+
+  _read(size: number) {
+    if (this.bytesRemaining <= 0) {
+      this.push(null); // End stream
+      return;
+    }
+
+    const chunk = Buffer.alloc(this.chunkSize);
+    const toPush = chunk.subarray(0, Math.min(chunk.length, this.bytesRemaining));
+    this.bytesRemaining -= toPush.length;
+
+    toPush.fill(this.fillByte);
+
+    this.push(toPush);
+  }
+};
