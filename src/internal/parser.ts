@@ -36,7 +36,7 @@ function processArgFormat(input: string): FileFormat {
 
 function collectCmdArgs(): FileArgs {
   const argv = yargs(process.argv.slice(2))
-    .wrap(120)
+    .wrap(100)
     .usage('Usage: $0 <output> [options]')
     .command("$0 <output>", "Create new file", (yargs) => {
       yargs.positional('output', {
