@@ -2,13 +2,14 @@
   "name": "fill-file",
   "license": "MIT",
   "version": "0.1.0",
+  "bin": "dist/npx-bin",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup index.ts --format cjs,esm --dts",
+    "build": "tsup index.ts --format cjs,esm --dts && ./build-npx-bin",
     "lint": "tsc",
-    "ci:publish": "pnpm publish -r"
+    "ci:publish": "pnpm build && pnpm publish -r"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.4",

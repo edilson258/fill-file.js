@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -x
+
+touch dist/npx-bin
+echo "#!/usr/bin/env node" > dist/npx-bin
+cat dist/index.js >> dist/npx-bin
+chmod +x dist/npx-bin
