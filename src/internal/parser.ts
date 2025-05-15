@@ -49,7 +49,7 @@ function collectCmdArgs(): FileArgs {
     })
     .option('s', {
       alias: 'size',
-      default: '1K',
+      default: '64K',
       description: 'File size, which can be B, K, M, or G',
     })
     .option('f', {
@@ -65,7 +65,7 @@ function collectCmdArgs(): FileArgs {
     .version('v', 'Display version information', '0.1.0')
     .alias('version', 'v')
     .example('$0 file.txt -s 1M -t txt', 'Creates a lorem ipsum text file with 1MB size')
-    .epilog('For more information visit https://github.com/edilson258/makefile')
+    .epilog('For more information visit https://github.com/edilson258/fill-file')
     .showHelpOnFail(false, 'Something went wrong! run with --help')
     .parse();
 
