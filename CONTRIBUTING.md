@@ -32,3 +32,22 @@ pnpm build
 ```shell
 pnpm tests
 ```
+
+## Make changes where you like
+
+After cloning and building the project in your local machine, now you can start playing around,
+we recommend creating a new branch to keep things clean and simplify the submition of your changes.
+
+Create sematic branchs accordingly to the change being made
+```shell
+# bug fix
+git checkout -b fix/win-newline-char
+
+# docs
+git checkout -b docs/add-website-favicon
+
+# feature
+git checkout -b feat/json-file-support
+```
+
+## Submit a Pull Request
