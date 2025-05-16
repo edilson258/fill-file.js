@@ -1,21 +1,26 @@
-import path from "path";
-import { fileURLToPath } from "url";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-/**
- * Determines if the current module is being run directly (vs imported).
- * Works in both CommonJS and ESM environments.
- */
-export function isDirectRun(): boolean {
-  // CommonJS check (require.main === module)
-  const isCommonJSDirectRun =
-    typeof require !== 'undefined' &&
+function isCommonJSDirectRun(): boolean {
+  return typeof require !== 'undefined' &&
     require.main === module;
+}
 
-  // ESM check (import.meta.url matches process.argv[1])
-  const isESMDirectRun =
-    typeof import.meta !== 'undefined' &&
-    import.meta.url &&
-    fileURLToPath(import.meta.url) === path.resolve(process.argv[1] ?? "");
+function isESMDirectRun(): boolean {
+  try {
+    // Delay access to import.meta to runtime only
+    // @ts-ignore: Safe in ESM, ignored in CJS
+    const meta = import.meta;
+    if (!meta?.url) return false;
 
-  return !!(isCommonJSDirectRun || isESMDirectRun);
+    const thisFile = fileURLToPath(meta.url);
+    const mainScript = path.resolve(process.argv[1] ?? "");
+    return thisFile === mainScript;
+  } catch {
+    return false;
+  }
+}
+
+export function isDirectRun(): boolean {
+  return isCommonJSDirectRun() || isESMDirectRun();
 }
