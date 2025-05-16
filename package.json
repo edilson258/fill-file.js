@@ -7,7 +7,7 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup index.ts --format cjs,esm --dts",
+    "build": "tsup index.ts --format cjs,esm --dts && node scripts/add-shebang.js dist/index.js",
     "lint": "tsc",
     "ci:publish": "pnpm build && pnpm publish -r"
   },
